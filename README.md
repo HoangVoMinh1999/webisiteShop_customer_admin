@@ -1,4 +1,4 @@
-# This is website customer and admin of shop
-## Written by handlebars Nodejs and database MongoDB
-**-User_Layout_master: customer **  
-**-Admin_Layout_master: admin **
+#WEBSITE CUSTOMER AND ADMIN OF SHOP
+###Written by handlebars Nodejs and database MongoDB
+__-User_Layout_master: customer __  
+__-Admin_Layout_master: admin __
