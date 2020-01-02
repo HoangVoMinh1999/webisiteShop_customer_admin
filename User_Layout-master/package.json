@@ -1,0 +1,32 @@
+{
+  "name": "p-web-gk",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "build": "npm build",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "bcrypt": "^3.0.7",
+    "connect": "^3.7.0",
+    "cookie-parser": "^1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
+    "express": "^4.16.4",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "handlebars": "^4.5.1",
+    "http-errors": "~1.6.3",
+    "mongodb": "^3.3.5",
+    "mongoose": "^5.7.12",
+    "morgan": "~1.9.1",
+    "node-pre-gyp": "^0.14.0",
+    "node-pre-gyp-init": "^1.1.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}

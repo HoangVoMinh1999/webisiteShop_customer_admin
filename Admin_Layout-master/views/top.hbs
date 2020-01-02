@@ -1,0 +1,33 @@
+<script type="text/javascript">
+  window.onload = function () {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+        text: "Top 10 sản phẩm"
+      },
+      data: [
+      {
+        type: "bar",
+        dataPoints: [
+        { y: 198, label: "shirt1"},
+        { y: 201, label: "shirt2"},
+        { y: 202, label: "shirt3"},
+        { y: 236, label: "shirt4"},
+        { y: 395, label: "shirt5"},
+        { y: 957, label: "shirt6"},
+        { y: 957, label: "shirt61"},
+        { y: 957, label: "shirt62"},
+        { y: 957, label: "shirt63"},
+        { y: 957, label: "shirt64"},
+        ]
+      },
+      
+      ]
+    });
+
+
+chart.render();
+}
+</script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>

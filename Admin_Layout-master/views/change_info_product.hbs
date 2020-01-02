@@ -1,0 +1,13 @@
+<div class="container">
+    {{#each products}}
+    <form action="/change_info" method="POST">
+        ID sản phẩm <input type="text" name="id" value="{{id}}" disabled><br>
+        Tên sản phẩm<input type="text" name="name" value="{{name}}"><br>
+        Loại sản phẩm<input type="text" name="type" value="{{type}}"><br>
+        Thương hiệu <input type="text" name="brand" value="{{brand}}"><br>
+        Giá <input type="number" name="price" value="{{price}}"><br>
+        <button type="submit">Xác nhận</button>
+        <button><span style="color: red;">Xóa sản phẩm</span></button>
+    </form>
+    {{/each}}
+</div>

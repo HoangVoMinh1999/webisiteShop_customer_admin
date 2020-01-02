@@ -1,0 +1,36 @@
+<div class="content mt-3">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <strong class="card-title">Data Table</strong>
+          </div>
+          <div class="card-body">
+            <table id="bootstrap-data-table" class="table table-striped table-bordered" style="text-align: center;">
+              <thead>
+                <tr>
+                  <th>Họ và tên</th>
+                  <th>Username</th>
+                  <th><button><a href="#">Thêm khách hàng</a></button></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each users}}
+                <tr>
+                  <td>{{name}}</td>
+                  <td>{{username}}</td>
+                  <th><button><a href="/change_info">Chỉnh Sửa</a></button></th>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div><!-- .animated -->
+</div><!-- .content -->
