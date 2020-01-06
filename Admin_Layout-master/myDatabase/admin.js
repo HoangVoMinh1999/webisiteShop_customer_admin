@@ -28,23 +28,17 @@ var adminSchema=new schema({
 })
 
 module.exports= mongoose.model('admin',adminSchema,'admin');
-function admin(username,password){
-    this.username=username;
-    this.password=password;
+var salt=bcrypt.genSaltSync(10);
+var superadmin={
+    username:"superadmin",
+    password:bcrypt.hashSync("123456",salt),
 }
-var admin=new admin(
-    'superadmin',
-    '123456',
-);
 client.connect(err => {
     const collection = client.db("guest").collection("admin");
-    var salt=bcrypt.genSaltSync(10);
-    admin.password=bcrypt.hashSync(admin.password,salt);
-    collection.insertOne(admin,function(err)
-    {
+    collection.insertOne(superadmin,function(err){
         if (err) throw err;
-        console.log("insert admin successfully !!!!");
-    });
+        console.log("Insert ADMIN successfully !!!");
+    })
     client.close();
   });
   module.exports= router;

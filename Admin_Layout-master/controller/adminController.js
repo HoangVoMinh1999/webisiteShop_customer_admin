@@ -1,5 +1,5 @@
 require('dotenv').config();
-var Admin = require('../myDatabase/admin');
+var admin = require('../myDatabase/admin');
 var bcrypt = require('bcrypt');
 var bodyParser = require("body-parser");
 var flash = require("connect-flash");
@@ -7,10 +7,6 @@ const MongoClient = require('mongodb').MongoClient;
 var uri = process.env.DB_LOCALHOST || process.env.DB_ATLAS;
 const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true });
 
-function admin(username,password){
-  this.username=username;
-  this.password=password;
-}
 
 exports.addAdmin= async function(req,res,next){
   var username=req.body.username;
@@ -29,7 +25,9 @@ exports.addAdmin= async function(req,res,next){
       const collection = client.db("guest").collection("admin");
       collection.findOne({username:username},function(err,obj){
         if (!obj){
-          var new_admin= new admin(username,bcrypt.hashSync(password,salt));
+          var new_admin= {
+            username:username,
+            password:bcrypt.hashSync(password,salt)};
           console.log('check');
           collection.insertOne(new_admin,function(err){
             if (err) throw err;

@@ -1,11 +1,40 @@
 <div class="container">
     <form action="/add_product" method="POST">
-        Tên sản phẩm<input type="text" name="name" placeholder="Tên sản phẩm"><br>
-        Link hình ảnh<input type="text" name="imagePath" placeholder="Link hình ảnh"><br>
-        Nhãn hiệu<input type="text" name="brand" placeholder="Nhãn hiệu"><br>
-        Loại sản phẩm<input type="text" name="type" placeholder="Loại sản phẩm"><br>
-        Giá sản phẩm<input type="number" name="price" placeholder="Giá sản phẩm"><br>
-        <button type="submit">Thêm sản phẩm</button>
-        <button><a href="/products">Quay về</a></button>
+    <table style="width: 100%;" border="2">
+        <thead>
+            <tr>
+                <th style="width: 30%;"></th>
+                <th style="width: 30%;"></th>
+                <th style="width: 40%;">Hình ảnh</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th><input type="text" name="name" placeholder="Nhập tên sản phẩm" style="width: 100%;"></th>
+                <th rowspan="3">
+                    <img src="images/default-thumbnail.jpg" alt="Hình ảnh sản phẩm" style="width:100%">
+                    <input type="text" name="imagePath" value="https://carolinadojo.com/wp-content/uploads/2017/04/default-image.jpg" hidden>
+                </th>
+            </tr>
+            <tr>
+                <th>Loại sản phẩm</th>
+                <th><input type="text" name="type" placeholder="Nhập loại sản phẩm" style="width: 100%;"></th>
+            </tr>
+            <tr>
+                <th>Thương hiệu</th>
+                <th><input type="text" name="brand" placeholder="Nhập nhãn hiệu" style="width: 100%;"></th>
+            </tr>
+            <tr>
+                <th>Giá cả(VND)</th>
+                <th><input type="number" name="price" placeholder="Nhập giá cả" style="width: 100%;"></th>
+                <th>
+                    <button>Thêm hình ảnh</button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit">Xác nhận</button>
+    <button><a href="/products">Quay lại</a></button>
     </form>
 </div>

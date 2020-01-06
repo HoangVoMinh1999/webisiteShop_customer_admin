@@ -1,13 +1,41 @@
 <div class="container">
     {{#each products}}
-    <form action="/change_info" method="POST">
-        ID sản phẩm <input type="text" name="id" value="{{id}}" disabled><br>
-        Tên sản phẩm<input type="text" name="name" value="{{name}}"><br>
-        Loại sản phẩm<input type="text" name="type" value="{{type}}"><br>
-        Thương hiệu <input type="text" name="brand" value="{{brand}}"><br>
-        Giá <input type="number" name="price" value="{{price}}"><br>
-        <button type="submit">Xác nhận</button>
-        <button><span style="color: red;">Xóa sản phẩm</span></button>
+    <form action="/change_info?_id={{_id}}" method="POST"></form>
+    <table style="width: 100%;" border="2">
+        <thead>
+            <tr>
+                <th style="width: 30%;"></th>
+                <th style="width: 30%;"></th>
+                <th style="width: 40%;">Hình ảnh</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th><input type="text" name="_id" value="{{_id}}" style="width: 100%;height:100%" disabled></th>
+                <th rowspan="5"><img src="{{imagePath}}" alt="Hình ảnh sản phẩm" style="height:40%"></th>
+            </tr>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th><input type="text" name="name" value="{{name}}" style="width: 100%;"></th>
+            </tr>
+            <tr>
+                <th>Loại sản phẩm</th>
+                <th><input type="text" name="type" value="{{type}}" style="width: 100%;"></th>
+            </tr>
+            <tr>
+                <th>Thương hiệu</th>
+                <th><input type="text" name="brand" value="{{brand}}" style="width: 100%;"></th>
+            </tr>
+            <tr>
+                <th>Giá cả(VND)</th>
+                <th><input type="number" name="price" value="{{price}}" style="width: 100%;"></th>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit">Xác nhận</button>
+    <button onclick="deleteProduct({{_id}})">Xóa sản phẩm</button>
     </form>
+    <button><a href="/products">Quay lại</a></button>
     {{/each}}
 </div>
