@@ -26,9 +26,7 @@ router.get('/', function (req, res, next) {
 });
 //---Products---
 //------------------------------------------------
-router.get('/products', productsController.showProducts);
-//------------------------------------------------
-router.get('/filter', productsController.filter);
+router.get('/products', productsController.filter);
 //--------------------------------------------------
 router.get('/detail', productsController.detail);
 
