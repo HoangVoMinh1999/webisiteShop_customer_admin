@@ -90,3 +90,25 @@ exports.changeInfo = async function (req, res, next) {
     res.redirect('/products')
   });
 }
+
+exports.deleteProduct=async function(req,res,next){
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  client.connect(err => {
+    const collection = client.db("guest").collection("products");
+    let query = {
+      _id: require('mongoose').Types.ObjectId(req.query._id),
+    };
+    console.log(query);
+    let new_data={
+      $set:{
+        status:false,
+      }
+    }
+    collection.updateOne(query,new_data,function(err){
+      if (err) throw err;
+      console.log("Delete PRODUCT successfully !!!");
+    })
+    res.redirect('/products');
+    client.close();
+  });
+}

@@ -34,6 +34,15 @@ var productsSchema=new schema({
         type:Boolean,
         default:true,
     },
+    quantity:{
+        type:Number,
+        default:0,
+    },
+    quality:{
+        type:Number,
+        max:5,
+        min:0,
+    }
 });
 module.exports= mongoose.model('products',productsSchema,'products');
 var new_product = {
@@ -43,6 +52,8 @@ var new_product = {
     type:"Shirt",
     price:5000000,
     status:true,
+    quantity:50,
+    quality:5,
 }
 client.connect(err => {
     const collection = client.db("guest").collection("products");

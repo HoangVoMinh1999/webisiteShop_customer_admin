@@ -1,41 +1,33 @@
-<div class="container">
-    {{#each products}}
-    <form action="/change_info?_id={{_id}}" method="POST"></form>
-    <table style="width: 100%;" border="2">
-        <thead>
-            <tr>
-                <th style="width: 30%;"></th>
-                <th style="width: 30%;"></th>
-                <th style="width: 40%;">Hình ảnh</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>ID</th>
-                <th><input type="text" name="_id" value="{{_id}}" style="width: 100%;height:100%" disabled></th>
-                <th rowspan="5"><img src="{{imagePath}}" alt="Hình ảnh sản phẩm" style="height:40%"></th>
-            </tr>
-            <tr>
-                <th>Tên sản phẩm</th>
-                <th><input type="text" name="name" value="{{name}}" style="width: 100%;"></th>
-            </tr>
-            <tr>
-                <th>Loại sản phẩm</th>
-                <th><input type="text" name="type" value="{{type}}" style="width: 100%;"></th>
-            </tr>
-            <tr>
-                <th>Thương hiệu</th>
-                <th><input type="text" name="brand" value="{{brand}}" style="width: 100%;"></th>
-            </tr>
-            <tr>
-                <th>Giá cả(VND)</th>
-                <th><input type="number" name="price" value="{{price}}" style="width: 100%;"></th>
-            </tr>
-        </tbody>
-    </table>
-    <button type="submit">Xác nhận</button>
-    <button onclick="deleteProduct({{_id}})">Xóa sản phẩm</button>
+<div class="container-fluid">
+    <form action="/change_info_product?_id={{_id}}" method="POST" >
+        {{#each products}}
+        <input type="text" name="_id" value="{{_id}}" style="width: 100%;height:100%" hidden>
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-2"><b>Tên sản phẩm</b></div>
+            <div class="col-md-4"><input type="text" name="name" value="{{name}}" style="width: 100%;"></div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-2"><b>Loại sản phẩm</b></div>
+            <div class="col-md-4"><input type="text" name="type" value="{{type}}" style="width: 100%;"></div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-2"><b>Nhãn hiệu</b></div>
+            <div class="col-md-4"><input type="text" name="brand" value="{{brand}}" style="width: 100%;"></div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-2"><b>Giá cả</b></div>
+            <div class="col-md-4"><input type="number" name="price" value="{{price}}" style="width: 100%;"></div>
+        </div>
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-2"><b>Số lượng</b></div>
+            <div class="col-md-4"><input type="text" name="quantity" value="{{quantity}}" style="width: 100%;"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><button type="submit">Xác nhận</button></div>
+            <div class="col-md-2"><button><a href="/products">Quay về</a></button></div>
+            <div class="col-md-2" ><button style="color: red;">Xóa sản phẩm</button></div>
+        </div>
+        {{/each}}
     </form>
-    <button><a href="/products">Quay lại</a></button>
-    {{/each}}
+
 </div>

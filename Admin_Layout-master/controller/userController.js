@@ -20,3 +20,22 @@ exports.showUsers=function(req,res,next){
       });
     });
 }
+
+exports.searchUser=function(req,res,next){
+  const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true });
+  client.connect(err => {
+    var data=[];
+    var choice=req.query.choice;
+    var value=req.query.value;
+    const collection = client.db("guest").collection("users");
+    let query={};
+    var cursor=collection.find(query);
+    cursor.forEach(function(item,err){
+      if (err) throw err;
+      data.push(item);
+    },function(){
+      client.close();
+      res.render('customer',{title:'Customers',users:data});
+    });
+  });
+}

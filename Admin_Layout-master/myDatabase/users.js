@@ -19,6 +19,14 @@ var userSchema = new schema({
         type: String,
         required: true,
     },
+    email:{
+        type:String,
+        required:true,
+    },
+    phone:{
+        type:String,
+        required:true
+    },
     username: {
         type: String,
         required: true,
@@ -36,11 +44,14 @@ var userSchema = new schema({
 });
 
 module.exports = mongoose.model('users', userSchema, 'users');
-
+var salt=bcrypt.genSaltSync(10);
 var superuser = {
     name:"Võ Minh Hoàng",
-    username: "superuser",
-    password: "123456",
+    email:"vominhhoang@gmail.com",
+    phone:"0916245523",
+    username:"superuser",
+    password:bcrypt.hashSync("123456",salt),
+    status:true
 }
 client.connect(err => {
     const collection = client.db("guest").collection("users");

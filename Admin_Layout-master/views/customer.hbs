@@ -7,20 +7,38 @@
             <strong class="card-title">Data Table</strong>
           </div>
           <div class="card-body">
+            <form action="/customer">
+              <div class="row">
+                <div class="col-md-2"><b>TÌM KIẾM</b></div>
+                <div class="col-md-2"><input type="radio" name="choice" value="name" id="search" checked>&nbsp Họ và tên</div>
+                <div class="col-md-2"><input type="radio" name="choice" value="email" id="search">&nbsp Email</div>
+                <div class="col-md-2"><input type="radio" name="choice" value="phone" id="search">&nbsp Số điện thoại</div>
+                <div class="col-md-2"><input type="radio" name="choice" value="username" id="search">&nbsp Username</div>
+              </div>
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-10"><input type="text" name="value" placeholder="Nhập giá trị cần tìm kiếm" style="width: 90%;"></div>
+                <div class="col-md-2"><button type="submit">Tìm kiếm</button></div>
+              </div>
+            </form>
             <table id="bootstrap-data-table" class="table table-striped table-bordered" style="text-align: center;">
               <thead>
                 <tr>
                   <th>Họ và tên</th>
+                  <th>Email</th>
+                  <th>Số điện thoại</th>
                   <th>Username</th>
+                  <th>Tình trạng</th>
                   <th><button><a href="#">Thêm khách hàng</a></button></th>
-                  <th></th>
                 </tr>
               </thead>
               <tbody>
                 {{#each users}}
                 <tr>
                   <td>{{name}}</td>
+                  <th>{{email}}</th>
+                  <th>{{phone}}</th>
                   <td>{{username}}</td>
+                  <th>{{status}}</th>
                   <th><button><a href="/change_info">Chỉnh Sửa</a></button></th>
                 </tr>
                 {{/each}}

@@ -14,18 +14,22 @@
                   <th>Tên sản phẩm</th>
                   <th>Nhãn hiệu</th>
                   <th>Giá thành(VND)</th>
+                  <th>Số lượng</th>
+                  <th>Đánh giá</th>
                   <th><button><a href="/add_product">Thêm sản phẩm</a></button></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 {{#each products}}
-                <tr>
+                <tr style="text-align: center;">
                   <th>{{name}}</th>
                   <th>{{brand}}</th>
                   <th>{{price}}</th>
+                  <th>{{quantity}}</th>
+                  <th>{{quality}}</th>
                   <th>
-                    <form action="/change_info">
+                    <form action="/change_info_product">
                       <button type="submit" name="_id" value="{{_id}}">Chỉnh sửa</button>
                     </form>
                   </th>
