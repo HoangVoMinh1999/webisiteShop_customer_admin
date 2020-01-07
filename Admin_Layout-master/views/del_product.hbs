@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="text-center" style="position: sticky;">
+    <form action="/del_product?_id={{_id}}" method="POST">
+    {{#each products}}
+    <input type="text" name="_id" value="{{_id}}" hidden>
+      <img src="/images/320909.jpg" alt="caution" style="width: 300px;height:300px;margin-bottom:20px">
+      <p class="text-uppercase" style="font-size: 20px;color:black;"><b>bạn có chắc chắn muốn xóa sản phẩm không ?</b></p>
+      <span class="text-uppercase"><button type="submit" class="myButton" style="width: 100px;">Có</button></span>
+      <span class="text-uppercase"><a href="/products"><button class="myButton" style="width: 100px;color:black">Không</button</a></span>
+    {{/each}}
+    </form>
+
+  </div>
+</div>

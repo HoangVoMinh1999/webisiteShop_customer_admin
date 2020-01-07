@@ -39,7 +39,11 @@
                   <th>{{phone}}</th>
                   <td>{{username}}</td>
                   <th>{{status}}</th>
-                  <th><button><a href="/change_info">Chỉnh Sửa</a></button></th>
+                  <th>
+                    <form action="/view_user">
+                      <button type="submit" name="_id" value="{{_id}}">Xem thông tin</button>
+                    </form>
+                  </th>
                 </tr>
                 {{/each}}
               </tbody>

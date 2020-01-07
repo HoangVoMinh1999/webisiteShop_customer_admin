@@ -68,11 +68,13 @@ exports.changeInfoPage = async function (req, res, next) {
 exports.changeInfo = async function (req, res, next) {
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   client.connect(err => {
-    var list = [];
     const collection = client.db("guest").collection("products");
+    console.log("check");
+    console.log(req.body._id)
     let query = {
-      _id: require('mongoose').Types.ObjectId(req.query._id),
+      _id: require('mongoose').Types.ObjectId(req.body._id),
     };
+    console.log('check');
     console.log(query);
     let new_data = {
       $set: {
@@ -91,12 +93,31 @@ exports.changeInfo = async function (req, res, next) {
   });
 }
 
+exports.deleteProductPage = async function (req, res, next) {
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  client.connect(err => {
+    var data = [];
+    const collection = client.db("guest").collection("products");
+    let query = {
+      _id: require('mongoose').Types.ObjectId(req.query._id),
+    }
+    var cursor = collection.findOne(query, function (err, item) {
+      if (err) throw err;
+      data.push(item);
+      console.log("find item successfully !!!");
+      console.log(data);
+    });
+    client.close();
+    res.render('del_product', { title: 'Delete Product', products: data });
+  });
+}
+
 exports.deleteProduct=async function(req,res,next){
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   client.connect(err => {
     const collection = client.db("guest").collection("products");
     let query = {
-      _id: require('mongoose').Types.ObjectId(req.query._id),
+      _id: require('mongoose').Types.ObjectId(req.body._id),
     };
     console.log(query);
     let new_data={
@@ -104,11 +125,12 @@ exports.deleteProduct=async function(req,res,next){
         status:false,
       }
     }
+    console.log(new_data)
     collection.updateOne(query,new_data,function(err){
       if (err) throw err;
       console.log("Delete PRODUCT successfully !!!");
     })
-    res.redirect('/products');
+    res.redirect("/products")
     client.close();
   });
 }

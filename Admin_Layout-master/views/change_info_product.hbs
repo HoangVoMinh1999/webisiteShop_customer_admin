@@ -1,8 +1,10 @@
 <div class="container-fluid">
+    <h1>CHỈNH SỬA THÔNG TIN SẢN PHẨM</h1>
     <form action="/change_info_product?_id={{_id}}" method="POST" >
         {{#each products}}
-        <input type="text" name="_id" value="{{_id}}" style="width: 100%;height:100%" hidden>
+        
         <div class="row" style="margin-bottom: 10px;">
+            <input type="text" name="_id" value="{{_id}}" hidden>
             <div class="col-md-2"><b>Tên sản phẩm</b></div>
             <div class="col-md-4"><input type="text" name="name" value="{{name}}" style="width: 100%;"></div>
         </div>
@@ -20,12 +22,11 @@
         </div>
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-md-2"><b>Số lượng</b></div>
-            <div class="col-md-4"><input type="text" name="quantity" value="{{quantity}}" style="width: 100%;"></div>
+            <div class="col-md-4"><input type="number" name="quantity" value="{{quantity}}" style="width: 100%;"></div>
         </div>
         <div class="row">
-            <div class="col-md-2"><button type="submit">Xác nhận</button></div>
-            <div class="col-md-2"><button><a href="/products">Quay về</a></button></div>
-            <div class="col-md-2" ><button style="color: red;">Xóa sản phẩm</button></div>
+            <div class="col-md-2"><button class="myButton" type="submit">Xác nhận</button></div>
+            <div class="col-md-2"><button class="myButton"><a href="/products">Quay về</a></button></div>
         </div>
         {{/each}}
     </form>

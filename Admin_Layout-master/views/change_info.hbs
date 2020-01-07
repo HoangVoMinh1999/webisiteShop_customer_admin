@@ -1,52 +1,57 @@
- <div class="content mt-3">
-            <div class="animated fadeIn">
+<div class="content mt-3">
+    <div class="animated fadeIn">
 
-                <div class="row">
+        <div class="row">
 
-                    <div class="col-xs-6 col-sm-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Chỉnh sửa</strong> <small> Thông tin khách hàng</small>
-                            </div>
-                            <div class="card-body card-block">
-                                <div class="form-group">
-                                    <label class=" form-control-label">Họ và tên</label>
-                                    <div class="input-group">
-                                        <input class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Số điện thoại</label>
-                                    <div class="input-group">
-                                        <input class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Email</label>
-                                    <div class="input-group">
-                                        <input class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Địa chỉ</label>
-                                    <div class="input-group">
-                                        <input class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <button type="submit">Lưu</button>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <button type="submit">Hủy Bỏ</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+            <div class="col-xs-6 col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Chi tiết<trong> <small> thông tin khách hàng</small>
                     </div>
+                    <form action="view_user?_id={{_id}}" method="POST">
+                        {{#each user}}
+                        <input type="text" name="_id" value="{{_id}}" hidden>
+                        <div class="card-body card-block">
+                            <div class="form-group">
+                                <label class=" form-control-label">Họ và tên</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="name" value="{{name}}" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Số điện thoại</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="phone" value="{{phone}}" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Email</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="email" value="{{email}}" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class=" form-control-label">Username</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="text" name="username" value="{{username}}" disabled>
+                                </div>
+                            </div>
+                            <input type="radio" name="check" value="true">Active
+                            <input type="radio" name="check" value="false" style="margin-left: 30px;">Deact
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <button type="submit">Lưu</button>
+                                </div>
+                                <div class="col-sm-4">
+                                    <button type="submit">Hủy Bỏ</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        {{/each}}
+                    </form>
                 </div>
-
-
-            </div><!-- .animated -->
-        </div><!-- .content -->
+            </div>
+        </div>
+    </div><!-- .animated -->
+</div><!-- .content -->

@@ -22,12 +22,12 @@ router.get('/index',adminController.checkLogin,function(req,res,next){
 	res.render('index', { title: 'Index' })
 })
 //------------------------------------------------------------------------------------------
+//---Admin----------------------------------------------------------------------------------
 //---Login
 router.get('/', function (req, res, next) {
 	res.render('login', { title: 'Login', message: req.flash('message'), layout:'loginLayout' });
 });
 router.post('/', adminController.login)
-
 //---Register
 router.get('/register',function(req,res,next){
 	res.render('register',{title:'Register'});
@@ -37,6 +37,13 @@ router.post('/register',adminController.addAdmin);
 router.get('/my_profile',adminController.viewProfile);
 //---Log out
 router.get('/logout',adminController.logout);
+//-------------------------------------------------------------------------------------------
+//---Users
+router.get('/customer', userController.searchUser);
+//---Activate User
+router.get('/view_user',userController.detailUserPage);
+router.post('/view_user',userController.detailUser);
+//-------------------------------------------------------------------------------------------
 //---Products--------------------------------------------------------------------------------
 router.get('/products', productsController.showProducts);
 //---Add Product
@@ -48,7 +55,7 @@ router.post('/add_product',productsController.addProduct);
 router.get('/change_info_product',productsController.changeInfoPage);
 router.post('/change_info_product',productsController.changeInfo);
 //---Delete Product
+router.get('/del_product',productsController.deleteProductPage);
 router.post('/del_product',productsController.deleteProduct);
-//---Users
-router.get('/customer', userController.searchUser);
+
 module.exports = router;
