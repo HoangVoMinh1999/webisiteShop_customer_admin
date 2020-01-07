@@ -1,50 +1,50 @@
 require('dotenv').config();
 
-var mongoose = require('mongoose');
+var mongoose=require('mongoose');
 var express = require('express');
 var router = express.Router();
-var mongodb = require('mongodb');
-var products = require('../models/products');
+var mongodb=require('mongodb');
+var products=require('../models/products');
 
 const MongoClient = require('mongodb').MongoClient;
 var uri = process.env.DB_LOCALHOST || process.env.DB_ATLAS;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = new MongoClient(uri, { useNewUrlParser: true,useUnifiedTopology: true });
 
-var schema = mongoose.Schema;
+var schema=mongoose.Schema;
 
-var productsSchema = new schema({
-    imagePath: {
-        type: String,
-        required: true,
-        default: 'https://carolinadojo.com/wp-content/uploads/2017/04/default-image.jpg',
+var productsSchema=new schema({
+    imagePath:{
+        type:String,
+        required:true,
+        default:'https://carolinadojo.com/wp-content/uploads/2017/04/default-image.jpg',
     },
-    name: {
-        type: String,
+    name:{
+        type:String,
     },
-    brand: {
-        type: String,
+    brand:{
+        type:String,
     },
-    type: {
-        type: String,
+    type:{
+        type:String,
     },
-    price: {
-        type: Number,
+    price:{
+        type:Number,
     },
-    status: {
-        type: Boolean,
-        default: true,
+    status:{
+        type:Boolean,
+        default:true,
     },
-    quantity: {
-        type: Number,
-        default: 0,
+    quantity:{
+        type:Number,
+        default:0,
     },
-    quality: {
-        type: Number,
-        max: 5,
-        min: 0,
+    quality:{
+        type:Number,
+        max:5,
+        min:0,
     }
 });
-module.exports = mongoose.model('products', productsSchema, 'products');
+module.exports= mongoose.model('products',productsSchema,'products');
 var new_product = [
     {
         imagePath:"https://s7d5.scene7.com/is/image/UrbanOutfitters/52145463_106_f?$xlarg...",
@@ -87,4 +87,4 @@ client.connect(err => {
     client.close();
 });
 
-module.exports = router;
+module.exports= router;

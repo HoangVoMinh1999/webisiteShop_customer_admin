@@ -26,7 +26,7 @@ exports.filter = async function (req, res, next) {
 			console.log(data);
 			client.close();
 			if (req.isAuthenticated()) {
-				res.render('products', { title: 'Products', layout: 'loggedLAyout', products: data })
+				res.render('products', { title: 'Products', layout: 'loggedLayout', products: data })
 			}
 			else
 			res.render('products', { title: 'Products', layout: 'layout', products: data })
@@ -54,7 +54,7 @@ exports.sortProduct = async function (req, res, next) {
 		},function(){
 			client.close();
 			if (req.isAuthenticated()) {
-				res.render('sort', { title: 'Sort', layout: 'loggedLAyout', products: data })
+				res.render('sort', { title: 'Sort', layout: 'loggedLayout', products: data })
 			}
 			else
 			res.render('sort', { title: 'Sort', layout: 'layout', products: data })
