@@ -31,7 +31,7 @@ app.use(express.static('public'));
 
 app.use(session({
   secret:"secret",
-  saveUninitialized:false,
+  saveUninitialized:true,
   resave:false
  }));
 app.use(cookieParser());  

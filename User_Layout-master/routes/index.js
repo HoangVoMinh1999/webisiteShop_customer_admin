@@ -44,6 +44,8 @@ router.post('/register', registerController.postRegister);
 router.get('/login', loginController.login);
 //--------------------------------------------------
 router.post('/login',loginController.userLogin);
+//--------------------------------------------------
+router.get('/account',loginController.detail);
 //-------------------------------------------------
 router.get('/logout', logoutController.logout);
 module.exports = router;

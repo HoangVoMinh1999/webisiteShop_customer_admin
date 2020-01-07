@@ -5,33 +5,32 @@ var products = require('../myDatabase/products');
 const MongoClient = require('mongodb').MongoClient;
 
 var uri = process.env.DB_LOCALHOST || process.env.DB_ATLAS;
+
 //------------------------------------------------------
 exports.filter = async function (req, res, next) {
-	var data=[]
-	var limit=9
-	var listPage=[]
+	var data = []
+	var limit = 9
+	var listPage = []
 	const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 	client.connect(err => {
 		const collection = client.db("guest").collection("products");
-		let query=req.query;
+		let query = req.query;
 		console.log(query);
-		var cursor=collection.find(query)
-		cursor.forEach(function(item,err){
+		var cursor = collection.find(query)
+		cursor.forEach(function (item, err) {
 			if (err) throw err;
-			if (item.status==true){
+			if (item.status == true) {
 				data.push(item)
 			}
-		},function(){
-			var totalProduct=data.length
-			console.log(totalProduct);
-			var totalPage=totalProduct/limit;
-			for (i=0;i<totalProduct;i++){
-				listPage.push(i)
-			}
+		}, function () {
 			client.close();
-			res.render('products',{title:'Products',products:data,page:listPage})
+			if (req.isAuthenticated()) {
+				res.render('products', { title: 'Products', layout: 'loggedLAyout', products: data })
+			}
+			else
+			res.render('products', { title: 'Products', layout: 'layout', products: data })
 		})
-	  });
+	});
 };
 //------------------------------------------
 exports.sortProduct = async function (req, res, next) {
@@ -67,7 +66,13 @@ exports.detail = async function (req, res, next) {
 			console.log(data);
 		}, function () {
 			client.close();
-			res.render('product_detail', { title: 'Detail', products: data });
+			if (req.isAuthenticated()){
+				res.render('product_detail', { title: 'Detail',layout:'loggedLayout', products: data });
+			}
+			else{
+				res.render('product_detail', { title: 'Detail', products: data });
+			}
+			
 		});
 	});
 };

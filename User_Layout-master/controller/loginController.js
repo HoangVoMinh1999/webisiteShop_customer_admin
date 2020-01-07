@@ -9,7 +9,7 @@ var bcrypt=require('bcrypt');
 const MongoClient = require('mongodb').MongoClient;
 var uri = process.env.DB_LOCALHOST || process.env.DB_ATLAS;
 
-
+var ssn;
 exports.login = (req,res,next) => {
     res.render('login', { title: 'AEMÌNHDUI',layout:'loginLayout',message: req.flash('message')  });
 }
@@ -39,9 +39,6 @@ passport.use(new LocalStrategy({
 				if (!user) {
 					return done(null, false, req.flash('message', 'Incorrect username.'));
 				}
-				console.log(passwordField);
-				console.log(bcrypt.hashSync(passwordField,salt));
-				console.log(user.password);
 				if (!bcrypt.compareSync(passwordField,user.password)) {
 					return done(null, false, req.flash('message', 'Incorrect password.'));
 				}
@@ -51,7 +48,7 @@ passport.use(new LocalStrategy({
 				}
 				var sessData = req.session;
 				sessData.userSession = user;
-                console.log(sessData);
+				ssn=user;
 				return done(null, user);
 			});
 			client.close();
@@ -59,5 +56,28 @@ passport.use(new LocalStrategy({
 	}
 ));
 passport.serializeUser((user, done) => done(null, user));
-passport.deserializeUser((user, done) => done(null, user));
+// passport.deserializeUser((user, done) => done(null, user));
+
+exports.detail=async function(req,res,next){
+	var data=[];
+	const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+	client.connect(err => {
+		let query={
+			_id:require('mongoose').Types.ObjectId(ssn._id)
+		}
+		console.log(query)
+		const collection = client.db("guest").collection("users");
+		var cursor=collection.find(query)
+		cursor.forEach(function(item,err){
+			if (err) throw err;
+			data.push(item);
+			console.log(data);
+		})
+		client.close();
+		res.render('account',{title:'Profile',layout:'loggedLayout',user:data});
+	  });
+}
+exports.confirmChange=async function(req,res,next){
+	
+}
 
