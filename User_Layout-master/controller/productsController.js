@@ -16,13 +16,14 @@ exports.filter = async function (req, res, next) {
 		const collection = client.db("guest").collection("products");
 		let query = req.query;
 		console.log(query);
-		var cursor = collection.find(query)
+		var cursor = collection.find(query,{status:true})
 		cursor.forEach(function (item, err) {
 			if (err) throw err;
 			if (item.status == true) {
 				data.push(item)
 			}
 		}, function () {
+			console.log(data);
 			client.close();
 			if (req.isAuthenticated()) {
 				res.render('products', { title: 'Products', layout: 'loggedLAyout', products: data })
@@ -33,20 +34,31 @@ exports.filter = async function (req, res, next) {
 	});
 };
 //------------------------------------------
+//------------------------------------------
 exports.sortProduct = async function (req, res, next) {
 	var data = [];
 	const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 	client.connect(err => {
 		const collection = client.db("guest").collection("products");
-		let query = req.body.name;
-		console.log(query);
-		collection.find().sort(query, function (err, item) {
+		console.log('check')
+		let query={
+			name:1
+		}
+		if (req.query!==query) query={name:Number(req.query.name)}
+		if (isNaN(query.name)) query={name:-1}
+		console.log(query)
+		var cursor=collection.find({status:true}).sort(query)
+		cursor.forEach(function(item,err){
 			if (err) throw err;
-			data.push(item);
-			console.log(data);
+			data.push(item)
+		},function(){
+			client.close();
+			if (req.isAuthenticated()) {
+				res.render('sort', { title: 'Sort', layout: 'loggedLAyout', products: data })
+			}
+			else
+			res.render('sort', { title: 'Sort', layout: 'layout', products: data })
 		});
-		client.close();
-		res.render('products', { title: 'Sort', products: data });
 	});
 
 };

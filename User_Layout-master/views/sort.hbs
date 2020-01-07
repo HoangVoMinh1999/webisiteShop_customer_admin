@@ -1,0 +1,92 @@
+<section>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<div class="panel-group category-products" id="accordian">
+						<form action="/products">
+							<input type="text" name="name" placeholder="nhập tên sản phẩm" style="width: 100%;height:30px">
+							<button type="submit" style="width: 100%;margin-bottom:30px">Tìm sản phẩm</button>
+						</form>
+						<!--category-productsr-->
+						<form action="/sort">
+							<h2>Sắp xếp</h2>
+							<p style="font-size: 17px;"><input type="radio" name="name" value="1">Tên từ A-Z</p>
+							<p style="font-size: 17px;"><input type="radio" name="name" value="-1">Tên từ Z-A</p>
+							<button type="submit" style="width: 100%;">Lọc</button>
+						</form>
+						<form action="/products">
+							<h2>Danh mục</h2>
+							<p style="font-size: 17px;"><input type="radio" name="type" value="Shirt" id="type">Shirt</p>
+							<p style="font-size: 17px;"><input type="radio" name="type" value="Shoes" id="type">Shoes</p>
+							<p style="font-size: 17px;"><input type="radio" name="type" value="Trousers" id="type">Trousers</p>
+							<h2>Brand</h2>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Nike" id="brand">Nike</p>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Adidas" id="brand">Adidas</p>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Levis" id="brand">Levis</p>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Việt Tiến" id="brand">Việt Tiến</p>
+							<input type="submit" value="Lọc" style="width: 100%;">
+						</form>
+					</div>
+					<!--/category-productsr-->
+					<!--/price-range-->
+
+					<div class="shipping text-center">
+						<!--shipping-->
+						<img src="images/home/shipping.jpg" alt="" />
+					</div>
+					<!--/shipping-->
+
+				</div>
+			</div>
+{{!-- List_Of_Products --}}
+			<div class="col-sm-9 padding-right">
+				<div class="features_items">
+					<!--features_items-->
+					<h2 class="title text-center">Sản phẩm</h2>
+					{{#each products}}
+					<div class="col-sm-4">
+						<div class="product-image-wrapper">
+							<div class="single-products">
+								<div class="productinfo text-center">
+									<img src={{imagePath}} alt="hình sản phẩm" style="width: 250px;height:300px"/>
+									<h2>{{name}}</h2>
+									<p>{{price}}VND</p>
+									<a href="#" class="btn btn-default add-to-cart"><i
+											class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+								</div>
+								<div class="product-overlay">
+									<div class="overlay-content">
+										<h2>{{name}}</h2>
+										<p>{{price}}VND</p>
+										<a href="#" class="btn btn-default add-to-cart"><i
+												class="fa fa-shopping-cart"></i>Thêm vào giỏ hàng</a>
+									</div>
+								</div>
+							</div>
+							<div class="choose">
+								<ul class="nav nav-pills nav-justified">
+									<form action="/detail">
+										<button type="submit" name="_id" value="{{_id}}">Xem chi tiết</button>
+										{{!-- <input type="submit" name="_id" value="{{_id}}" > --}}
+									</form>
+								</ul>
+							</div>
+						</div>
+					</div>
+					{{/each}}
+				</div>
+				<!--features_items-->
+			</div>
+		</div>
+{{!-- /List_Of_Products --}}
+	</div>
+</section>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/price-range.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/main.js"></script>

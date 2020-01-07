@@ -4,36 +4,37 @@
 			<div class="col-sm-3">
 				<div class="left-sidebar">
 					<div class="panel-group category-products" id="accordian">
-						<!--category-productsr-->
 						<form action="/products">
-							<h2>Sắp xếp</h2>
-							<p style="font-size: 17px;"><input type="radio" name="name" value="1">Tên từ A-Z</p>
-							<p style="font-size: 17px;"><input type="radio" name="name" value="-1">Tên từ Z-A</p>
-							<button type="submit" style="width: 100%;">Lọc</button>
+							<input type="text" name="name" placeholder="nhập tên sản phẩm"
+								style="width: 100%;height:30px">
+							<button type="submit" style="width: 100%;">Tìm sản phẩm</button>
 						</form>
+						<!--category-productsr-->
+						<a href="/sort">
+							<h2 style="margin-top:30px ;margin-bottom:30px">Sắp xếp</h2>
+						</a>
+
 						<form action="/products">
 							<h2>Danh mục</h2>
-							<p style="font-size: 17px;"><input type="radio" name="type" value="Shirt" id="type">Shirt</p>
-							<p style="font-size: 17px;"><input type="radio" name="type" value="Shoes" id="type">Shoes</p>
-							<p style="font-size: 17px;"><input type="radio" name="type" value="Trousers" id="type">Trousers</p>
+							<p style="font-size: 17px;"><input type="radio" name="type" value="Shirt" id="type">Shirt
+							</p>
+							<p style="font-size: 17px;"><input type="radio" name="type" value="Shoes" id="type">Shoes
+							</p>
+							<p style="font-size: 17px;"><input type="radio" name="type" value="Trousers"
+									id="type">Trousers</p>
 							<h2>Brand</h2>
-							<p style="font-size: 17px;"><input type="radio" name="brand" value="Nike" id="brand">Nike</p>
-							<p style="font-size: 17px;"><input type="radio" name="brand" value="Adidas" id="brand">Adidas</p>
-							<p style="font-size: 17px;"><input type="radio" name="brand" value="Levis" id="brand">Levis</p>
-							<p style="font-size: 17px;"><input type="radio" name="brand" value="Việt Tiến" id="brand">Việt Tiến</p>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Nike" id="brand">Nike
+							</p>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Adidas"
+									id="brand">Adidas</p>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Levis" id="brand">Levis
+							</p>
+							<p style="font-size: 17px;"><input type="radio" name="brand" value="Việt Tiến"
+									id="brand">Việt Tiến</p>
 							<input type="submit" value="Lọc" style="width: 100%;">
 						</form>
 					</div>
 					<!--/category-productsr-->
-					<div class="price-range">
-						<!--price-range-->
-						<h2>Tầm giá</h2>
-						<div class="well">
-							<input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600"
-								data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
-							<b>$ 0</b> <b class="pull-right">$ 600</b>
-						</div>
-					</div>
 					<!--/price-range-->
 
 					<div class="shipping text-center">
@@ -44,7 +45,7 @@
 
 				</div>
 			</div>
-{{!-- List_Of_Products --}}
+			{{!-- List_Of_Products --}}
 			<div class="col-sm-9 padding-right">
 				<div class="features_items">
 					<!--features_items-->
@@ -54,7 +55,7 @@
 						<div class="product-image-wrapper">
 							<div class="single-products">
 								<div class="productinfo text-center">
-									<img src={{imagePath}} alt="" />
+									<img src={{imagePath}} alt="hình sản phẩm" style="width: 250px;height:300px" />
 									<h2>{{name}}</h2>
 									<p>{{price}}VND</p>
 									<a href="#" class="btn btn-default add-to-cart"><i
@@ -84,7 +85,7 @@
 				<!--features_items-->
 			</div>
 		</div>
-{{!-- /List_Of_Products --}}
+		{{!-- /List_Of_Products --}}
 	</div>
 </section>
 

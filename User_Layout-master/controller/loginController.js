@@ -56,7 +56,7 @@ passport.use(new LocalStrategy({
 	}
 ));
 passport.serializeUser((user, done) => done(null, user));
-// passport.deserializeUser((user, done) => done(null, user));
+
 
 exports.detail=async function(req,res,next){
 	var data=[];

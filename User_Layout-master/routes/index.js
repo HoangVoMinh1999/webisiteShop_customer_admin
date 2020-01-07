@@ -28,8 +28,8 @@ router.get('/', layoutController.indexPage);
 router.get('/products', productsController.filter);
 
 //------------------------------------------------
-router.get('/sort',productsController.sortProduct);
 
+router.get('/sort',productsController.sortProduct);
 //--------------------------------------------------
 router.get('/detail', productsController.detail);
 

@@ -34,3 +34,12 @@ exports.detailPage= async function(req,res,next){
         res.render('detail',{title:'AEMÌNHDUI-Detail', layout:'layout'})
     }
 }
+
+exports.sortPage= async function(req,res,next){
+    if (req.isAuthenticated()){
+        res.render('Sort',{title:'Sort', layout:'loggedLayout'})
+    }
+    else{
+        res.render('Sort',{title:'Sort', layout:'layout'})
+    }
+}
