@@ -18,72 +18,44 @@ var adminController=require('../controller/adminController');
 const MongoClient = require('mongodb').MongoClient;
 var uri = process.env.DB_LOCALHOST || process.env.DB_ATLAS;
 /* GET home page. */
-router.get('/index', function (req, res, next) {
-	res.render('index', { title: 'Index' });
-});
-//--------------------------------------
+router.get('/index',adminController.checkLogin,function(req,res,next){
+	res.render('index', { title: 'Index' })
+})
+//------------------------------------------------------------------------------------------
+//---Admin----------------------------------------------------------------------------------
 //---Login
 router.get('/', function (req, res, next) {
 	res.render('login', { title: 'Login', message: req.flash('message'), layout:'loginLayout' });
 });
-router.post('/login', passport.authenticate('local', {
-	successRedirect: '/index',
-	failureRedirect: '/',
-	failureFlash: true
-}),
-	function (req, res) {
-		// set session
-
-		res.redirect('/',{message: req.flash('message')});
-	});
-passport.use(new LocalStrategy({
-	passReqToCallback: true,
-	usernameField: 'username',
-	passwordField: 'password'
-},
-	function (req, usernameField, passwordField, done) {
-		var salt = bcrypt.genSaltSync(10);
-		const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-		client.connect(err => {
-			const collection = client.db("guest").collection("admin");
-			collection.findOne({ username: usernameField }, function (err, user) {
-				if (err) { return done(err); }
-				if (!user) {
-					return done(null, false, req.flash('message', 'Incorrect username.'));
-				}
-				console.log(passwordField);
-				console.log(bcrypt.hashSync(passwordField, salt));
-				console.log(user.password);
-				if (!bcrypt.compareSync(passwordField, user.password)) {
-					return done(null, false, req.flash('message', 'Incorrect password.'));
-				}
-
-				var sessData = req.session;
-				sessData.userSession = user;
-
-				return done(null, user);
-			});
-			client.close();
-		});
-	}
-));
-passport.serializeUser((user, done) => done(null, user));
-passport.deserializeUser((user, done) => done(null, user));
+router.post('/', adminController.login)
 //---Register
 router.get('/register',function(req,res,next){
 	res.render('register',{title:'Register'});
 });
 router.post('/register',adminController.addAdmin);
-//--------------------------------------------
-//---Products
+//---My Profile
+router.get('/my_profile',adminController.viewProfile);
+//---Log out
+router.get('/logout',adminController.logout);
+//-------------------------------------------------------------------------------------------
+//---Users
+router.get('/customer', userController.searchUser);
+//---Activate User
+router.get('/view_user',userController.detailUserPage);
+router.post('/view_user',userController.detailUser);
+//-------------------------------------------------------------------------------------------
+//---Products--------------------------------------------------------------------------------
 router.get('/products', productsController.showProducts);
+//---Add Product
 router.get('/add_product',function(req,res,next){
 	res.render('add_product',{title:'Add new product'});
 });
 router.post('/add_product',productsController.addProduct);
+//---Change Info Product
+router.get('/change_info_product',productsController.changeInfoPage);
+router.post('/change_info_product',productsController.changeInfo);
+//---Delete Product
+router.get('/del_product',productsController.deleteProductPage);
+router.post('/del_product',productsController.deleteProduct);
 
-router.get('/change_info',productsController.changeInfoPage);
-router.post('/change_info',productsController.changeInfo);
-//---Users
-router.get('/customer', userController.showUsers);
 module.exports = router;

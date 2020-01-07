@@ -1,7 +1,6 @@
 <div class="content mt-3">
   <div class="animated fadeIn">
     <div class="row">
-
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
@@ -14,20 +13,32 @@
                   <th>Tên sản phẩm</th>
                   <th>Nhãn hiệu</th>
                   <th>Giá thành(VND)</th>
+                  <th>Số lượng</th>
+                  <th>Đánh giá</th>
                   <th><button><a href="/add_product">Thêm sản phẩm</a></button></th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 {{#each products}}
-                <tr>
+                <tr style="text-align: center;">
                   <th>{{name}}</th>
                   <th>{{brand}}</th>
                   <th>{{price}}</th>
+                  <th>{{quantity}}</th>
+                  <th>{{quality}}</th>
                   <th>
-                    <form action="/change_info">
-                      <button type="submit" name="_id" value="{{_id}}">Chỉnh sửa</button>
-                    </form>
+                    <span>
+                      <form action="/change_info_product">
+                        <button type="submit" name="_id" value="{{_id}}">Chỉnh sửa</button>
+                      </form>
+                    </span>
+                    <span>
+                      <form action="/del_product">
+                        <button type="submit" name="_id" value="{{_id}}">Xóa sản phẩm</button>
+                      </form>
+                    </span>
+                    <!-- Button trigger modal -->
                   </th>
                 </tr>
                 {{/each}}
@@ -36,8 +47,20 @@
           </div>
         </div>
       </div>
-
-
+    </div>
+    <div class="row">
+      <ul class="pagination">
+        <li class="active"><a href="">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href="">&raquo;</a></li>
+      </ul>
     </div>
   </div><!-- .animated -->
 </div><!-- .content -->
+<script src="js/jquery.js"></script>
+<script src="js/price-range.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.prettyPhoto.js"></script>
+<script src="js/main.js"></script>
