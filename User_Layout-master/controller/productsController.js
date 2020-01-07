@@ -3,6 +3,7 @@ require('dotenv').config();
 var products = require('../myDatabase/products');
 
 const MongoClient = require('mongodb').MongoClient;
+
 var uri = process.env.DB_LOCALHOST || process.env.DB_ATLAS;
 //------------------------------------------------------
 exports.filter = async function (req, res, next) {
@@ -48,6 +49,7 @@ exports.sortProduct = async function (req, res, next) {
 		client.close();
 		res.render('products', { title: 'Sort', products: data });
 	});
+
 };
 //------------------------------------------
 exports.detail = async function (req, res, next) {

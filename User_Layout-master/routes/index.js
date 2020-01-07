@@ -26,8 +26,10 @@ router.get('/', layoutController.indexPage);
 //---Products---
 //------------------------------------------------
 router.get('/products', productsController.filter);
+
 //------------------------------------------------
 router.get('/sort',productsController.sortProduct);
+
 //--------------------------------------------------
 router.get('/detail', productsController.detail);
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  <div class="content mt-3">
             <div class="animated fadeIn">
                 {{#each admin}}
@@ -53,3 +54,60 @@
 
             </div><!-- .animated -->
         </div><!-- .content -->
+=======
+ <div class="content mt-3">
+            <div class="animated fadeIn">
+                {{#each admin}}
+                <div class="row">
+
+                    <div class="col-xs-6 col-sm-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>My Profile</strong> <small> <a href="/index"><h1 style="color: #535353;font-family:sans-serif"><span style="color:#FE980F;font-family: abel;">AEMÌNH</span>DUI</h1></a></small>
+                            </div>
+                            <div class="card-body card-block">
+                                <div class="form-group">
+                                    <label class=" form-control-label">Họ và tên</label>
+                                    <div class="input-group">
+                                        <input class="form-control" value="{{name}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Số điện thoại</label>
+                                    <div class="input-group">
+                                        <input class="form-control" value="{{phone}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Email</label>
+                                    <div class="input-group">
+                                        <input class="form-control" value="{{email}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class=" form-control-label">Địa chỉ</label>
+                                    <div class="input-group">
+                                        <input class="form-control" value="{{address}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <button type="submit">Lưu</button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <button><a href="/index">Quay lại trang chủ</a></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ml-auto">
+                        <img src="{{avatar}}" alt="Hình Avatar">
+                    </div>
+                </div>
+                {{/each}}
+
+            </div><!-- .animated -->
+        </div><!-- .content -->
+>>>>>>> d9f2b272caa1edb502718701e9a76422e2e668be
